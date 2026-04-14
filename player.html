@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0c1118" />
+    <title>Player — Squad</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&family=Outfit:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div id="toast-root" aria-live="polite"></div>
+
+    <div class="notif-panel" id="notif-panel" aria-hidden="true">
+      <div class="notif-panel__backdrop" tabindex="-1"></div>
+      <aside class="notif-panel__sheet" role="dialog" aria-labelledby="notif-heading">
+        <div class="notif-panel__head">
+          <h2 id="notif-heading" class="card__title" style="margin: 0">Notifications</h2>
+          <button type="button" class="btn btn--ghost btn--sm" id="notif-close">Close</button>
+        </div>
+        <div class="notif-panel__body" id="notif-list"></div>
+      </aside>
+    </div>
+
+    <div class="app-shell">
+      <header class="app-header">
+        <a class="brand" href="player.html">
+          <span class="brand__mark" aria-hidden="true">S</span>
+          <span class="brand__text">
+            <span class="brand__title">Squad</span>
+            <span class="brand__sub">Player / Parent</span>
+          </span>
+        </a>
+        <div class="header-actions">
+          <div class="bell-wrap">
+            <button type="button" class="bell-btn" id="notif-toggle" aria-label="Open notifications">
+              🔔
+            </button>
+            <span class="bell-badge" id="notif-badge" hidden>0</span>
+          </div>
+          <span class="pill pill--live" id="user-label">Player</span>
+          <button type="button" class="btn btn--ghost btn--sm" id="logout">Log out</button>
+        </div>
+      </header>
+
+      <div id="player-empty" class="card empty-state" hidden>
+        No training plan published for your team yet. Check back after your coach posts the week.
+      </div>
+
+      <div id="training-content" class="stagger">
+        <section class="card">
+          <p class="pill pill--live" id="team-name" style="margin-bottom: 0.65rem">Team</p>
+          <h1 class="card__title" id="week-title" style="font-size: 1.35rem">Training</h1>
+          <p class="card__meta" id="week-meta">Week</p>
+        </section>
+
+        <section class="card">
+          <h2 class="card__title">Drills</h2>
+          <p class="card__meta">What we are doing at practice this week.</p>
+          <div id="drills-out" class="stack-sm"></div>
+        </section>
+
+        <section class="card">
+          <h2 class="card__title">Coaching points</h2>
+          <ul id="points-out" style="margin: 0; padding-left: 1.2rem; line-height: 1.5"></ul>
+        </section>
+
+        <section class="card">
+          <h2 class="card__title">Videos</h2>
+          <div id="videos-out" class="stack-sm"></div>
+        </section>
+
+        <section class="card">
+          <h2 class="card__title">Links</h2>
+          <div id="links-out" class="stack-sm"></div>
+        </section>
+
+        <section class="card">
+          <h2 class="card__title">Home practice checklist</h2>
+          <p class="card__meta">Track habits between sessions — saved on this device.</p>
+          <ul class="checklist" id="checklist"></ul>
+        </section>
+      </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/player-app.js"></script>
+  </body>
+</html>

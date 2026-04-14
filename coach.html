@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0c1118" />
+    <title>Coach — Squad</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&family=Outfit:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div id="toast-root" aria-live="polite"></div>
+
+    <div class="notif-panel" id="notif-panel" aria-hidden="true">
+      <div class="notif-panel__backdrop" tabindex="-1"></div>
+      <aside class="notif-panel__sheet" role="dialog" aria-labelledby="notif-heading">
+        <div class="notif-panel__head">
+          <h2 id="notif-heading" class="card__title" style="margin: 0">Notifications</h2>
+          <button type="button" class="btn btn--ghost btn--sm" id="notif-close">Close</button>
+        </div>
+        <div class="notif-panel__body" id="notif-list"></div>
+      </aside>
+    </div>
+
+    <div class="app-shell">
+      <header class="app-header">
+        <a class="brand" href="coach.html">
+          <span class="brand__mark" aria-hidden="true">S</span>
+          <span class="brand__text">
+            <span class="brand__title">Squad</span>
+            <span class="brand__sub">Coach</span>
+          </span>
+        </a>
+        <div class="header-actions">
+          <div class="bell-wrap">
+            <button type="button" class="bell-btn" id="notif-toggle" aria-label="Open notifications">
+              🔔
+            </button>
+            <span class="bell-badge" id="notif-badge" hidden>0</span>
+          </div>
+          <span class="pill pill--live" id="user-label">Coach</span>
+          <button type="button" class="btn btn--ghost btn--sm" id="logout">Log out</button>
+        </div>
+      </header>
+
+      <section class="card stagger" style="animation-delay: 0.02s">
+        <h2 class="card__title">Your teams</h2>
+        <p class="card__meta">Demo roster — add a team for additional squads.</p>
+        <div id="teams-list" class="stack-sm"></div>
+        <div class="list-divider"></div>
+        <form class="inline-form inline-form--row" id="new-team-form">
+          <div class="field" style="margin: 0">
+            <label for="new-team-name">New team name</label>
+            <input id="new-team-name" type="text" placeholder="e.g. U14 Thunder" autocomplete="organization" />
+          </div>
+          <button type="submit" class="btn btn--primary">Create team</button>
+        </form>
+      </section>
+
+      <section class="card stagger" style="animation-delay: 0.08s">
+        <h2 class="card__title">Weekly training hub</h2>
+        <p class="card__meta">Pick a team and week, then publish drills, coaching points, and media.</p>
+
+        <div class="toolbar">
+          <div class="field" style="margin: 0; min-width: 160px; flex: 1">
+            <label for="team-select">Team</label>
+            <select id="team-select"></select>
+          </div>
+          <div class="field" style="margin: 0; min-width: 200px; flex: 2">
+            <label for="weekly-select">Training week</label>
+            <select id="weekly-select"></select>
+          </div>
+          <button type="button" class="btn btn--ghost" id="new-week">New week</button>
+        </div>
+
+        <div id="week-empty" class="empty-state" hidden>
+          No week yet for this team. Tap <strong>New week</strong> to create the first plan.
+        </div>
+
+        <form id="weekly-form" class="stack-sm" hidden>
+          <div class="grid-2">
+            <div class="field">
+              <label for="week-of">Week of (date)</label>
+              <input id="week-of" type="date" required />
+            </div>
+            <div class="field">
+              <label for="week-title">Session title</label>
+              <input id="week-title" type="text" required />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="points">Key coaching points (one per line)</label>
+            <textarea id="points" placeholder="Pressing triggers…&#10;Rest defense shape…"></textarea>
+          </div>
+
+          <div>
+            <div class="toolbar" style="margin-bottom: 0.5rem">
+              <strong>Drills</strong>
+              <button type="button" class="btn btn--ghost btn--sm" id="add-drill">Add drill</button>
+            </div>
+            <div id="drills-editor" class="stack-sm"></div>
+          </div>
+
+          <div>
+            <div class="toolbar" style="margin-bottom: 0.5rem">
+              <strong>Videos</strong>
+              <button type="button" class="btn btn--ghost btn--sm" id="add-video">Add video</button>
+            </div>
+            <div id="videos-editor" class="stack-sm"></div>
+          </div>
+
+          <div>
+            <div class="toolbar" style="margin-bottom: 0.5rem">
+              <strong>Links</strong>
+              <button type="button" class="btn btn--ghost btn--sm" id="add-link">Add link</button>
+            </div>
+            <div id="links-editor" class="stack-sm"></div>
+          </div>
+
+          <button type="submit" class="btn btn--primary">Save &amp; notify players</button>
+          <p class="muted" style="margin: 0; font-size: 0.85rem">
+            Saves to this browser. Players get in-app alerts; email is simulated with a confirmation toast.
+          </p>
+        </form>
+      </section>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/coach-app.js"></script>
+  </body>
+</html>

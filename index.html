@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0c1118" />
+    <title>Squad — Soccer Coaching</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&family=Outfit:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div id="toast-root" aria-live="polite"></div>
+    <div class="app-shell">
+      <header class="app-header">
+        <a class="brand" href="index.html">
+          <span class="brand__mark" aria-hidden="true">S</span>
+          <span class="brand__text">
+            <span class="brand__title">Squad</span>
+            <span class="brand__sub">Coaching workspace</span>
+          </span>
+        </a>
+      </header>
+
+      <section class="login-hero">
+        <h1>Training plans, notes, and clips — in one place</h1>
+        <p>
+          A minimal, mobile-first hub for weekly drills and home practice. Demo data; no account setup
+          required.
+        </p>
+      </section>
+
+      <div class="card stagger">
+        <h2 class="card__title">Enter the demo</h2>
+        <p class="card__meta">Credentials are prefilled — choose a role and you are in.</p>
+        <div class="login-actions">
+          <button type="button" class="btn btn--primary" id="btn-coach">Continue as coach</button>
+          <button type="button" class="btn btn--ghost" id="btn-player">Continue as player / parent</button>
+        </div>
+        <p class="login-hint">Coach: coach@demo.com · Player: parent@demo.com · Password: demo</p>
+
+        <details class="disclosure">
+          <summary>Manual login (same prefilled values)</summary>
+          <form class="login-form" id="manual-login" autocomplete="on">
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" value="coach@demo.com" required />
+            </div>
+            <div class="field">
+              <label for="password">Password</label>
+              <input id="password" name="password" type="password" value="demo" required />
+            </div>
+            <button type="submit" class="btn btn--ghost btn--sm">Sign in</button>
+          </form>
+        </details>
+      </div>
+
+      <p class="login-footnote">MVP preview · Data stored locally in this browser</p>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/login.js"></script>
+  </body>
+</html>
